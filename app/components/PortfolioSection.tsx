@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import { StudioMark } from "./StudioMark";
 
 function ArrowIcon() {
@@ -54,6 +57,7 @@ function CardBase({
 }) {
   return (
     <div
+      className="portfolio-card"
       style={{
         position: "relative",
         gridColumn,
@@ -76,8 +80,15 @@ function CardBase({
 }
 
 export function PortfolioSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const scrollToSection = () => {
+    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section
+      ref={sectionRef}
       style={{
         position: "relative",
         background: "var(--black)",
@@ -96,11 +107,21 @@ export function PortfolioSection() {
             marginBottom: "clamp(48px, 8vw, 90px)",
           }}
         >
-          <span className="pill-badge">
+          <button
+            type="button"
+            className="pill-badge pill-badge-interactive"
+            onClick={scrollToSection}
+          >
             <StudioMark size={14} />
             Nosso Trabalho
-          </span>
-          <span className="pill-badge">Projetos Selecionados</span>
+          </button>
+          <button
+            type="button"
+            className="pill-badge pill-badge-interactive"
+            onClick={scrollToSection}
+          >
+            Projetos Selecionados
+          </button>
         </div>
 
         {/* bento grid */}

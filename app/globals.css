@@ -452,3 +452,15 @@ a:hover {
   --line: rgba(10, 11, 6, 0.18);
   --lime: var(--ink);
 }
+
+/* ===== Portfolio bento grid ===== */
+.portfolio-card {
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  will-change: transform;
+}
+.portfolio-card:hover {
+  transform: scale(1.035);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.55);
+  z-index: 2;
+}
