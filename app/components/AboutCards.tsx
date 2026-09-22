@@ -78,6 +78,11 @@ const STICKY_TOP = 128;
 
 export function AboutCards() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const scrollToSection = () => {
+    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -194,6 +199,7 @@ export function AboutCards() {
 
   return (
     <section
+      ref={sectionRef}
       style={{
         position: "relative",
         background: "var(--black)",
@@ -244,11 +250,21 @@ export function AboutCards() {
             marginBottom: "clamp(48px, 8vw, 90px)",
           }}
         >
-          <span className="pill-badge">
+          <button
+            type="button"
+            className="pill-badge pill-badge-interactive"
+            onClick={scrollToSection}
+          >
             <StudioMark size={14} />
             About the Studio
-          </span>
-          <span className="pill-badge">Independent Studio · Est. 2024</span>
+          </button>
+          <button
+            type="button"
+            className="pill-badge pill-badge-interactive"
+            onClick={scrollToSection}
+          >
+            Independent Studio · Est. 2024
+          </button>
         </div>
 
         {/* 6 stacked pixel-swap cards */}
