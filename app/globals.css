@@ -450,5 +450,5 @@ a:hover {
   --white: var(--ink);
   --muted: rgba(10, 11, 6, 0.62);
   --line: rgba(10, 11, 6, 0.18);
-  --lime: #f5f6ef;
+  --lime: var(--ink);
 }
