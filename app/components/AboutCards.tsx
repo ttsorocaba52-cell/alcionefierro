@@ -288,29 +288,6 @@ export function AboutCards() {
             </div>
           ))}
         </div>
-
-        {/* bottom row */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "clamp(70px, 10vw, 120px)",
-          }}
-        >
-          <p
-            style={{
-              textAlign: "center",
-              fontFamily: "var(--ff-heading)",
-              fontSize: "clamp(20px, 3vw, 28px)",
-              fontWeight: 600,
-              letterSpacing: "-0.01em",
-              margin: 0,
-            }}
-          >
-            Criado com <span style={{ color: "var(--lime)" }}>intenção.</span>
-          </p>
-        </div>
       </div>
     </section>
   );
