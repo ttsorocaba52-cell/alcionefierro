@@ -28,6 +28,7 @@ function PlayIcon() {
 function ActionDot({ variant }: { variant: "arrow" | "play" }) {
   return (
     <div
+      className="portfolio-action-dot"
       style={{
         position: "absolute",
         bottom: 20,
@@ -273,6 +274,7 @@ export function PortfolioSection() {
               </p>
             </div>
             <div
+              className="portfolio-action-dot"
               style={{
                 position: "absolute",
                 bottom: 20,
