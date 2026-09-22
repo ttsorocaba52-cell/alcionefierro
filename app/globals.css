@@ -442,3 +442,13 @@ a:hover {
     background-position: 100% 50%;
   }
 }
+
+/* ===== Deliverables accordion on a lime background =====
+   Re-scopes the shared .deliv-* tokens for dark-on-lime contrast
+   instead of duplicating the accordion rules. */
+.deliverables-lime {
+  --white: var(--ink);
+  --muted: rgba(10, 11, 6, 0.62);
+  --line: rgba(10, 11, 6, 0.18);
+  --lime: #f5f6ef;
+}
