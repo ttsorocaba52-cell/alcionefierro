@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { StudioMark } from "./StudioMark";
+import { GradientText } from "./GradientText";
 
 type DeliverableItem = {
   title: string;
@@ -72,10 +73,11 @@ export function DeliverablesSection() {
               letterSpacing: "-0.01em",
               lineHeight: 1.05,
               margin: 0,
-              color: "var(--white)",
             }}
           >
-            Entregáveis de Branding
+            <GradientText colors={["#84CC16", "#b9ff4c", "#dad5df"]} animationSpeed={8}>
+              Entregáveis de Branding
+            </GradientText>
           </h2>
         </div>
 

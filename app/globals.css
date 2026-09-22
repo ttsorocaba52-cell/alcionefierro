@@ -433,3 +433,12 @@ a:hover {
   font-family: var(--ff-body);
   max-width: 60ch;
 }
+
+@keyframes gradient-text-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
