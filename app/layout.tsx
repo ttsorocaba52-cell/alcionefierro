@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Studio — Brand Identity & Web Design",
+  title: "Estúdio — Identidade de Marca & Web Design",
   description:
-    "Independent brand and digital studio. We craft visual identities and digital experiences for brands ready to move forward.",
+    "Estúdio independente de marca e digital. Criamos identidades visuais e experiências digitais para marcas prontas para avançar.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${spaceGrotesk.variable} ${inter.variable}`}>
         {children}
       </body>

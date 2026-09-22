@@ -12,63 +12,63 @@ type CardData = {
 const CARDS: CardData[] = [
   {
     index: "01 / 06",
-    label: "Studio Philosophy",
+    label: "Filosofia do Estúdio",
     text: (
       <>
-        We believe great design solves real problems —{" "}
-        <span className="hl">not just decorates them.</span> Every brand we
-        build starts with strategy, not style.
+        Acreditamos que um bom design resolve problemas reais —{" "}
+        <span className="hl">e não apenas os decora.</span> Toda marca que
+        construímos começa com estratégia, não com estilo.
       </>
     ),
   },
   {
     index: "02 / 06",
-    label: "Our Process",
+    label: "Nosso Processo",
     text: (
       <>
-        Strategy comes first.{" "}
-        <span className="hl">Every pixel has to earn its place</span> before
-        it ships.
+        Estratégia vem primeiro.{" "}
+        <span className="hl">Cada pixel precisa merecer seu lugar</span>{" "}
+        antes de ir ao ar.
       </>
     ),
   },
   {
     index: "03 / 06",
-    label: "Full-Service",
+    label: "Serviço Completo",
     text: (
       <>
-        One team, <span className="hl">senior only</span> — from first sketch
-        to final launch.
+        Um time só, <span className="hl">sênior</span> — do primeiro esboço
+        ao lançamento final.
       </>
     ),
   },
   {
     index: "04 / 06",
-    label: "Brand Systems",
+    label: "Sistemas de Marca",
     text: (
       <>
-        We don&apos;t chase trends. We build systems{" "}
-        <span className="hl">built to last.</span>
+        Não perseguimos tendências. Construímos sistemas{" "}
+        <span className="hl">feitos para durar.</span>
       </>
     ),
   },
   {
     index: "05 / 06",
-    label: "How We Work",
+    label: "Como Trabalhamos",
     text: (
       <>
-        No juniors. No outsourcing. Just people who{" "}
-        <span className="hl">care about the work.</span>
+        Sem juniores. Sem terceirização. Só gente que{" "}
+        <span className="hl">se importa com o trabalho.</span>
       </>
     ),
   },
   {
     index: "06 / 06",
-    label: "Our Promise",
+    label: "Nossa Promessa",
     text: (
       <>
-        Your brand should feel inevitable —{" "}
-        <span className="hl">never invented.</span>
+        Sua marca deve parecer inevitável —{" "}
+        <span className="hl">nunca inventada.</span>
       </>
     ),
   },
@@ -256,14 +256,14 @@ export function AboutCards() {
             onClick={scrollToSection}
           >
             <StudioMark size={14} />
-            About the Studio
+            Sobre o Estúdio
           </button>
           <button
             type="button"
             className="pill-badge pill-badge-interactive"
             onClick={scrollToSection}
           >
-            Independent Studio · Est. 2024
+            Estúdio Independente · Fundado em 2024
           </button>
         </div>
 
@@ -308,7 +308,7 @@ export function AboutCards() {
               margin: 0,
             }}
           >
-            Crafted with <span style={{ color: "var(--lime)" }}>intention.</span>
+            Criado com <span style={{ color: "var(--lime)" }}>intenção.</span>
           </p>
         </div>
       </div>

@@ -201,21 +201,21 @@ export function HeroSection() {
                 textTransform: "uppercase",
               }}
             >
-              Studio
+              Estúdio
             </span>
           </div>
 
           {/* Center nav */}
           <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <a href="#" className="nav-link">Work</a>
-            <a href="#" className="nav-link">Services</a>
-            <a href="#" className="nav-link">Studio</a>
-            <a href="#" className="nav-link">Process</a>
+            <a href="#" className="nav-link">Trabalhos</a>
+            <a href="#" className="nav-link">Serviços</a>
+            <a href="#" className="nav-link">Estúdio</a>
+            <a href="#" className="nav-link">Processo</a>
           </div>
 
           {/* Right */}
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <a href="#" className="nav-link" style={{ letterSpacing: "0.08em" }}>Contact</a>
+            <a href="#" className="nav-link" style={{ letterSpacing: "0.08em" }}>Contato</a>
             <div
               className="btn-primary"
               style={{
@@ -234,7 +234,7 @@ export function HeroSection() {
                 whiteSpace: "nowrap",
               }}
             >
-              Start a Project
+              Iniciar Projeto
               <StudioMark size={12} color="#0a0b06" />
             </div>
           </div>
@@ -274,7 +274,7 @@ export function HeroSection() {
             marginBottom: "clamp(48px, 7vw, 80px)",
           }}
         >
-          <span>Brand Identity</span>
+          <span>Identidade de Marca</span>
           <span
             style={{
               width: 28,
@@ -305,9 +305,9 @@ export function HeroSection() {
             margin: 0,
           }}
         >
-          Brands built
+          Marcas construídas
           <br />
-          for <span style={{ color: "var(--lime)" }}>what comes next.</span>
+          para <span style={{ color: "var(--lime)" }}>o que vem a seguir.</span>
         </h1>
 
         {/* hero foot: text + mark + cta */}
@@ -334,7 +334,7 @@ export function HeroSection() {
               margin: 0,
             }}
           >
-            We craft visual identities and digital experiences for brands ready to move forward.
+            Criamos identidades visuais e experiências digitais para marcas prontas para avançar.
           </p>
 
           <span style={{ display: "inline-flex" }}>
@@ -358,7 +358,7 @@ export function HeroSection() {
               whiteSpace: "nowrap",
             }}
           >
-            View our work
+            Ver nosso trabalho
             <StudioMark size={13} color="#0a0b06" />
           </div>
         </div>
