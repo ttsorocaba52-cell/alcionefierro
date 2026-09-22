@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { StudioMark } from "./StudioMark";
+import { GradientText } from "./GradientText";
 
 type DeliverableItem = {
   title: string;
@@ -46,7 +47,7 @@ export function WebDeliverablesSection() {
       className="deliverables-lime"
       style={{
         position: "relative",
-        background: "linear-gradient(150deg, var(--lime-2) 0%, var(--lime) 100%)",
+        background: "#c8f31d",
         padding: "clamp(80px, 10vw, 140px) 32px clamp(90px, 11vw, 150px)",
       }}
     >
@@ -70,10 +71,11 @@ export function WebDeliverablesSection() {
               letterSpacing: "-0.01em",
               lineHeight: 1.05,
               margin: 0,
-              color: "var(--ink)",
             }}
           >
-            Entregáveis do Site
+            <GradientText colors={["#0a0b06", "#2c3a12", "#0a0b06"]} animationSpeed={8}>
+              Entregáveis do Site
+            </GradientText>
           </h2>
         </div>
 
