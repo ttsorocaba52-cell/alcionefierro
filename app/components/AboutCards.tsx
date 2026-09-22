@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { StudioMark } from "./StudioMark";
+import { DepthGrid } from "./DepthGrid";
 
 type CardData = {
   index: string;
@@ -78,6 +79,7 @@ const STICKY_TOP = 128;
 
 export function AboutCards() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -194,6 +196,7 @@ export function AboutCards() {
 
   return (
     <section
+      ref={sectionRef}
       style={{
         position: "relative",
         background: "var(--black)",
@@ -201,6 +204,9 @@ export function AboutCards() {
         overflow: "hidden",
       }}
     >
+      {/* depth grid — perspective floor converging to a vanishing point */}
+      <DepthGrid sectionRef={sectionRef} />
+
       {/* curved horizon glow */}
       <div
         style={{
