@@ -37,6 +37,11 @@ export function HeroSection() {
   const eggRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const scrollToProcess = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById("processSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   useEffect(() => {
     const root = rootRef.current;
     const glow = glowRef.current;
@@ -212,7 +217,7 @@ export function HeroSection() {
             <a href="#" className="nav-link">Trabalhos</a>
             <a href="#" className="nav-link">Serviços</a>
             <a href="#" className="nav-link">Estúdio</a>
-            <a href="#" className="nav-link">Processo</a>
+            <a href="#processSection" className="nav-link" onClick={scrollToProcess}>Processo</a>
           </div>
 
           {/* Right */}
@@ -258,7 +263,16 @@ export function HeroSection() {
           <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Trabalhos</a>
           <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Serviços</a>
           <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Estúdio</a>
-          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Processo</a>
+          <a
+            href="#processSection"
+            className="nav-link"
+            onClick={(e) => {
+              setMenuOpen(false);
+              scrollToProcess(e);
+            }}
+          >
+            Processo
+          </a>
           <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Contato</a>
         </div>
       </div>
