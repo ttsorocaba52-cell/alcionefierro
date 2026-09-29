@@ -330,44 +330,6 @@ export function HeroSection() {
           textAlign: "center",
         }}
       >
-        {/* pill nav */}
-        <div
-          className="fade-2"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 16,
-            padding: "10px 12px 10px 22px",
-            borderRadius: 999,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid var(--line)",
-            fontFamily: "var(--ff-heading)",
-            fontSize: 12,
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            marginBottom: "clamp(48px, 7vw, 80px)",
-          }}
-        >
-          <span>Identidade de Marca</span>
-          <span
-            style={{
-              width: 28,
-              height: 28,
-              borderRadius: 8,
-              background: "var(--ink)",
-              color: "var(--lime)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 15,
-            }}
-          >
-            +
-          </span>
-          <span style={{ color: "var(--muted)" }}>Web Design</span>
-        </div>
-
         <h1
           className="fade-2"
           style={{
@@ -385,20 +347,14 @@ export function HeroSection() {
           para <span style={{ color: "var(--lime)" }}>o que vem a seguir.</span>
         </h1>
 
-        {/* hero foot: text + mark + cta */}
+        {/* hero foot: supporting text */}
         <div
           className="fade-3"
           style={{
             width: "100%",
-            maxWidth: 920,
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginTop: "clamp(44px, 6vw, 76px)",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 24,
-            flexWrap: "wrap",
+            justifyContent: "center",
+            marginTop: "clamp(44px, 6vw, 76px)",
           }}
         >
           <p
@@ -406,35 +362,14 @@ export function HeroSection() {
               fontSize: 17,
               lineHeight: 1.6,
               color: "var(--muted)",
-              maxWidth: 380,
-              textAlign: "left",
+              maxWidth: 460,
+              textAlign: "center",
               fontWeight: 400,
               margin: 0,
             }}
           >
             Criamos identidades visuais e experiências digitais para marcas prontas para avançar.
           </p>
-
-          <div
-            className="btn-primary"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              padding: "15px 30px",
-              background: "var(--lime)",
-              color: "var(--ink)",
-              borderRadius: 999,
-              fontFamily: "var(--ff-heading)",
-              fontSize: 14,
-              fontWeight: 600,
-              cursor: "pointer",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Ver nosso trabalho
-            <StudioMark size={13} color="#0a0b06" />
-          </div>
         </div>
       </div>
     </div>
