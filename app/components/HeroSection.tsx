@@ -172,15 +172,11 @@ export function HeroSection() {
 
       {/* Header */}
       <div
-        className="fade-1"
+        className="fade-1 site-header"
         style={{
           position: "sticky",
           top: 0,
           zIndex: 100,
-          background: "rgba(8,9,10,0.72)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
-          borderBottom: "1px solid var(--line)",
           isolation: "isolate",
         }}
       >
@@ -418,10 +414,6 @@ export function HeroSection() {
           >
             Criamos identidades visuais e experiências digitais para marcas prontas para avançar.
           </p>
-
-          <span style={{ display: "inline-flex" }}>
-            <StudioMark size={40} className="hero-mark-pulse" />
-          </span>
 
           <div
             className="btn-primary"

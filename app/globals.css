@@ -558,6 +558,15 @@ a:hover {
   box-shadow: 0 0 22px rgba(255, 60, 1, 0.65);
 }
 
+/* ---- transparent floating header (no bar) ---- */
+.site-header .nav-link,
+.site-header .mark-hover span {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+}
+.site-header .header-hamburger {
+  background: rgba(8, 9, 10, 0.35);
+}
+
 /* ---- responsive: header nav ---- */
 .header-hamburger {
   display: none;
@@ -616,6 +625,9 @@ a:hover {
   .mobile-nav-panel.open {
     max-height: 320px;
     padding: 4px 32px 18px;
+    background: rgba(8, 9, 10, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
   .mobile-nav-panel .nav-link {
     padding: 12px 0;
