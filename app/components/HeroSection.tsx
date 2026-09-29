@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StudioMark } from "./StudioMark";
 
 const EGG_ITEMS: Array<{
@@ -35,6 +35,7 @@ export function HeroSection() {
   const rootRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const eggRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -179,6 +180,7 @@ export function HeroSection() {
         }}
       >
         <div
+          className="header-inner"
           style={{
             maxWidth: 1180,
             margin: "0 auto",
@@ -206,7 +208,7 @@ export function HeroSection() {
           </div>
 
           {/* Center nav */}
-          <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <div className="header-nav-center" style={{ display: "flex", alignItems: "center", gap: 32 }}>
             <a href="#" className="nav-link">Trabalhos</a>
             <a href="#" className="nav-link">Serviços</a>
             <a href="#" className="nav-link">Estúdio</a>
@@ -214,10 +216,10 @@ export function HeroSection() {
           </div>
 
           {/* Right */}
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <a href="#" className="nav-link" style={{ letterSpacing: "0.08em" }}>Contato</a>
+          <div className="header-right" style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <a href="#" className="nav-link header-contato-link" style={{ letterSpacing: "0.08em" }}>Contato</a>
             <div
-              className="btn-primary"
+              className="btn-primary header-cta"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -237,7 +239,27 @@ export function HeroSection() {
               Iniciar Projeto
               <StudioMark size={12} color="#0a0b06" />
             </div>
+            <button
+              type="button"
+              className="header-hamburger"
+              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
+        </div>
+
+        {/* Mobile nav panel */}
+        <div className={"mobile-nav-panel" + (menuOpen ? " open" : "")}>
+          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Trabalhos</a>
+          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Serviços</a>
+          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Estúdio</a>
+          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Processo</a>
+          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Contato</a>
         </div>
       </div>
 

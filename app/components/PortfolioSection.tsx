@@ -49,19 +49,18 @@ function ActionDot({ variant }: { variant: "arrow" | "play" }) {
 
 function CardBase({
   children,
-  gridColumn,
+  spanClass,
   lime,
 }: {
   children: React.ReactNode;
-  gridColumn: string;
+  spanClass: string;
   lime?: boolean;
 }) {
   return (
     <div
-      className="portfolio-card"
+      className={"portfolio-card " + spanClass}
       style={{
         position: "relative",
-        gridColumn,
         minHeight: 260,
         borderRadius: 20,
         border: "1px solid var(--line)",
@@ -127,6 +126,7 @@ export function PortfolioSection() {
 
         {/* bento grid */}
         <div
+          className="portfolio-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
@@ -134,7 +134,7 @@ export function PortfolioSection() {
           }}
         >
           {/* Card 1 — Nômade: metric card */}
-          <CardBase gridColumn="span 1">
+          <CardBase spanClass="portfolio-span-1">
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <StudioMark size={20} />
               <span
@@ -177,7 +177,7 @@ export function PortfolioSection() {
           </CardBase>
 
           {/* Card 2 — Vértice: description card */}
-          <CardBase gridColumn="span 3">
+          <CardBase spanClass="portfolio-span-3">
             <span
               style={{
                 fontFamily: "var(--ff-heading)",
@@ -207,7 +207,7 @@ export function PortfolioSection() {
           </CardBase>
 
           {/* Card 3 — Auria: description card, serif style */}
-          <CardBase gridColumn="span 3">
+          <CardBase spanClass="portfolio-span-3">
             <span
               style={{
                 fontFamily: "Georgia, 'Times New Roman', serif",
@@ -235,7 +235,7 @@ export function PortfolioSection() {
           </CardBase>
 
           {/* Card 4 — Solvo: metric card, lime */}
-          <CardBase gridColumn="span 1" lime>
+          <CardBase spanClass="portfolio-span-1" lime>
             <span
               style={{
                 fontFamily: "var(--ff-heading)",
