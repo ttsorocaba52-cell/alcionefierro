@@ -423,6 +423,36 @@ a:hover {
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.4s var(--ease);
 }
+.deliv-tabs {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  gap: 4px;
+}
+.deliv-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-family: var(--ff-heading);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.deliv-tab.active {
+  background: #c8f31d;
+  color: #0a0b06;
+}
+.deliverables-lime .deliv-tab.active {
+  background: #0a0b06;
+  color: #c8f31d;
+}
 .deliv-detail-inner {
   overflow: hidden;
 }
