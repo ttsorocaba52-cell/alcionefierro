@@ -88,7 +88,7 @@ export function DeliverablesSection() {
       className={isSite ? "deliverables-lime" : undefined}
       style={{
         position: "relative",
-        background: isSite ? "#c8f31d" : "var(--black)",
+        background: isSite ? "#ff3c01" : "var(--black)",
         padding: "clamp(80px, 10vw, 140px) 32px clamp(90px, 11vw, 150px)",
         transition: "background 0.4s var(--ease)",
       }}
@@ -111,7 +111,7 @@ export function DeliverablesSection() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <StudioMark size={36} color={isSite ? "#0a0b06" : "#c8f31d"} />
+            <StudioMark size={36} color={isSite ? "#0a0b06" : "#ff3c01"} />
             <h2
               style={{
                 fontFamily: "var(--ff-heading)",
@@ -124,7 +124,7 @@ export function DeliverablesSection() {
               }}
             >
               <GradientText
-                colors={isSite ? ["#0a0b06", "#2c3a12", "#0a0b06"] : ["#84CC16", "#b9ff4c", "#dad5df"]}
+                colors={isSite ? ["#0a0b06", "#3d1400", "#0a0b06"] : ["#c92e00", "#ff6a30", "#ffe3d6"]}
                 animationSpeed={8}
               >
                 Entregáveis
@@ -164,7 +164,7 @@ export function DeliverablesSection() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
                 <div className="deliv-item-head">
-                  <StudioMark size={18} color={isSite ? "#0a0b06" : "#c8f31d"} />
+                  <StudioMark size={18} color={isSite ? "#0a0b06" : "#ff3c01"} />
                   <div style={{ flex: 1 }}>
                     <h3>{item.title}</h3>
                     <p>{item.short}</p>

@@ -219,7 +219,7 @@ export function AboutCards() {
           height: "min(700px, 75vw)",
           borderRadius: "50%",
           background:
-            "radial-gradient(ellipse at center, rgba(200,243,29,0.30) 0%, rgba(200,243,29,0.08) 45%, transparent 70%)",
+            "radial-gradient(ellipse at center, rgba(255,60,1,0.30) 0%, rgba(255,60,1,0.08) 45%, transparent 70%)",
           filter: "blur(30px)",
           pointerEvents: "none",
           animation: "horizonPulse 6s ease-in-out infinite",
@@ -234,7 +234,7 @@ export function AboutCards() {
           width: "min(1160px, 120vw)",
           height: 2,
           borderRadius: "50%",
-          boxShadow: "0 0 70px 22px rgba(200,243,29,0.55)",
+          boxShadow: "0 0 70px 22px rgba(255,60,1,0.55)",
           pointerEvents: "none",
         }}
       />

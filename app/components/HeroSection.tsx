@@ -59,7 +59,7 @@ export function HeroSection() {
       const y = e.clientY - rect.top;
       if (raf) return;
       raf = requestAnimationFrame(() => {
-        glow.style.background = `radial-gradient(560px circle at ${x}px ${y}px, rgba(200,243,29,0.14), transparent 45%)`;
+        glow.style.background = `radial-gradient(560px circle at ${x}px ${y}px, rgba(255,60,1,0.14), transparent 45%)`;
         glow.style.opacity = "1";
         root.style.setProperty("--mx", `${x}px`);
         root.style.setProperty("--my", `${y}px`);
@@ -102,7 +102,7 @@ export function HeroSection() {
           borderRadius: "50%",
           filter: "blur(90px)",
           background:
-            "radial-gradient(circle, rgba(159,212,0,0.30), transparent 65%)",
+            "radial-gradient(circle, rgba(214,45,0,0.30), transparent 65%)",
           animation: "driftA 16s ease-in-out infinite",
           pointerEvents: "none",
           zIndex: 0,
@@ -119,48 +119,48 @@ export function HeroSection() {
 
         {/* browser wireframe icon */}
         <svg className="egg-item" style={{ top: "62%", left: "20%" }} width="46" height="34" viewBox="0 0 46 34" fill="none">
-          <rect x="1" y="1" width="44" height="32" rx="4" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <line x1="1" y1="9" x2="45" y2="9" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <circle cx="6" cy="5" r="1.3" fill="rgba(200,243,29,0.55)" />
-          <circle cx="11" cy="5" r="1.3" fill="rgba(200,243,29,0.55)" />
-          <line x1="6" y1="16" x2="24" y2="16" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <line x1="6" y1="22" x2="34" y2="22" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <line x1="6" y1="28" x2="20" y2="28" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
+          <rect x="1" y="1" width="44" height="32" rx="4" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <line x1="1" y1="9" x2="45" y2="9" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <circle cx="6" cy="5" r="1.3" fill="rgba(255,60,1,0.55)" />
+          <circle cx="11" cy="5" r="1.3" fill="rgba(255,60,1,0.55)" />
+          <line x1="6" y1="16" x2="24" y2="16" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <line x1="6" y1="22" x2="34" y2="22" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <line x1="6" y1="28" x2="20" y2="28" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
         </svg>
 
         {/* cursor / click icon */}
         <svg className="egg-item" style={{ top: "20%", right: "40%" }} width="20" height="24" viewBox="0 0 20 24" fill="none">
-          <path d="M1 1L19 10L11 12L8 20L1 1Z" fill="rgba(200,243,29,0.55)" />
+          <path d="M1 1L19 10L11 12L8 20L1 1Z" fill="rgba(255,60,1,0.55)" />
         </svg>
 
         {/* bezier / anchor point icon */}
         <svg className="egg-item" style={{ bottom: "18%", left: "46%" }} width="60" height="24" viewBox="0 0 60 24" fill="none">
-          <path d="M2 20C14 20 12 4 30 4C48 4 46 20 58 20" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <circle cx="2" cy="20" r="2.4" fill="rgba(200,243,29,0.55)" />
-          <circle cx="58" cy="20" r="2.4" fill="rgba(200,243,29,0.55)" />
-          <circle cx="30" cy="4" r="2.4" fill="rgba(200,243,29,0.55)" />
+          <path d="M2 20C14 20 12 4 30 4C48 4 46 20 58 20" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <circle cx="2" cy="20" r="2.4" fill="rgba(255,60,1,0.55)" />
+          <circle cx="58" cy="20" r="2.4" fill="rgba(255,60,1,0.55)" />
+          <circle cx="30" cy="4" r="2.4" fill="rgba(255,60,1,0.55)" />
         </svg>
 
         {/* layers icon */}
         <svg className="egg-item" style={{ top: "68%", left: "42%" }} width="30" height="26" viewBox="0 0 30 26" fill="none">
-          <path d="M15 1L29 8L15 15L1 8L15 1Z" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <path d="M1 13L15 20L29 13" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <path d="M1 18L15 25L29 18" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
+          <path d="M15 1L29 8L15 15L1 8L15 1Z" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <path d="M1 13L15 20L29 13" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <path d="M1 18L15 25L29 18" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
         </svg>
 
         {/* color palette icon */}
         <svg className="egg-item" style={{ bottom: "36%", right: "10%" }} width="30" height="30" viewBox="0 0 30 30" fill="none">
-          <circle cx="15" cy="15" r="13" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <circle cx="15" cy="7" r="2.6" fill="rgba(200,243,29,0.55)" />
-          <circle cx="9" cy="18" r="2.6" fill="rgba(200,243,29,0.55)" />
-          <circle cx="21" cy="18" r="2.6" fill="rgba(200,243,29,0.55)" />
+          <circle cx="15" cy="15" r="13" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <circle cx="15" cy="7" r="2.6" fill="rgba(255,60,1,0.55)" />
+          <circle cx="9" cy="18" r="2.6" fill="rgba(255,60,1,0.55)" />
+          <circle cx="21" cy="18" r="2.6" fill="rgba(255,60,1,0.55)" />
         </svg>
 
         {/* device breakpoints icon */}
         <svg className="egg-item" style={{ top: "42%", right: "46%" }} width="52" height="26" viewBox="0 0 52 26" fill="none">
-          <rect x="1" y="1" width="26" height="20" rx="2" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <rect x="33" y="6" width="18" height="16" rx="2" stroke="rgba(200,243,29,0.55)" strokeWidth="1.5" />
-          <line x1="1" y1="18" x2="27" y2="18" stroke="rgba(200,243,29,0.55)" strokeWidth="1" />
+          <rect x="1" y="1" width="26" height="20" rx="2" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <rect x="33" y="6" width="18" height="16" rx="2" stroke="rgba(255,60,1,0.55)" strokeWidth="1.5" />
+          <line x1="1" y1="18" x2="27" y2="18" stroke="rgba(255,60,1,0.55)" strokeWidth="1" />
         </svg>
       </div>
 

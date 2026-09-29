@@ -1,6 +1,6 @@
 export function StudioMark({
   size = 20,
-  color = "#c8f31d",
+  color = "#ff3c01",
   className,
 }: {
   size?: number;

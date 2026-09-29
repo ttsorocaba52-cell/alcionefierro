@@ -185,7 +185,7 @@ export function Footer() {
               width: "min(900px, 90vw)",
               height: "min(420px, 50vw)",
               borderRadius: "50%",
-              background: "radial-gradient(ellipse at center, rgba(200,243,29,0.25) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse at center, rgba(255,60,1,0.25) 0%, transparent 70%)",
               filter: "blur(60px)",
               pointerEvents: "none",
             }}
@@ -210,7 +210,7 @@ export function Footer() {
                 letterSpacing: "-0.02em",
               }}
             >
-              <GradientText colors={["#2c3a12", "#c8f31d", "#2c3a12"]} animationSpeed={10}>
+              <GradientText colors={["#3d1400", "#ff3c01", "#3d1400"]} animationSpeed={10}>
                 Estúdio
               </GradientText>
             </span>
