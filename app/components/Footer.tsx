@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { StudioMark } from "./StudioMark";
 import { GradientText } from "./GradientText";
 
@@ -36,6 +37,35 @@ function FooterColumn({ title, children }: { title: string; children: React.Reac
 }
 
 export function Footer() {
+  const wordmarkStageRef = useRef<HTMLDivElement>(null);
+  const wordmarkRevealRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const stage = wordmarkStageRef.current;
+    const reveal = wordmarkRevealRef.current;
+    if (!stage || !reveal) return;
+
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!finePointer) return;
+
+    const handleMove = (e: PointerEvent) => {
+      const rect = reveal.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      reveal.style.setProperty("--wx", `${x}px`);
+      reveal.style.setProperty("--wy", `${y}px`);
+      stage.classList.add("stage-active");
+    };
+    const handleLeave = () => stage.classList.remove("stage-active");
+
+    stage.addEventListener("pointermove", handleMove);
+    stage.addEventListener("pointerleave", handleLeave);
+    return () => {
+      stage.removeEventListener("pointermove", handleMove);
+      stage.removeEventListener("pointerleave", handleLeave);
+    };
+  }, []);
+
   const scrollToId = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -167,39 +197,36 @@ export function Footer() {
         </div>
       </div>
 
-      {/* giant wordmark signature */}
+      {/* giant wordmark signature — hidden message, revealed by a light that follows the cursor */}
       <div style={{ maxWidth: 1180, margin: "clamp(32px, 4vw, 48px) auto 0" }}>
         <div
+          ref={wordmarkStageRef}
+          className="wordmark-stage"
           style={{
             position: "relative",
             overflow: "hidden",
             height: "clamp(84px, 15vw, 220px)",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "min(900px, 90vw)",
-              height: "min(420px, 50vw)",
-              borderRadius: "50%",
-              background: "radial-gradient(ellipse at center, rgba(255,60,1,0.25) 0%, transparent 70%)",
-              filter: "blur(60px)",
-              pointerEvents: "none",
-            }}
-          />
           <div className="grain-layer" />
-          <div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              whiteSpace: "nowrap",
-            }}
-          >
+
+          <div className="wordmark-text wordmark-hidden" aria-hidden="true">
+            <span
+              style={{
+                fontFamily: "var(--ff-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(64px, 20vw, 300px)",
+                lineHeight: 1,
+                letterSpacing: "-0.02em",
+                color: "rgba(255,60,1,0.07)",
+              }}
+            >
+              Estúdio
+            </span>
+          </div>
+
+          <div ref={wordmarkRevealRef} className="wordmark-text wordmark-reveal">
             <span
               style={{
                 fontFamily: "var(--ff-heading)",
