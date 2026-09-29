@@ -25,24 +25,38 @@ function PlayIcon() {
   );
 }
 
-function ActionDot({ variant }: { variant: "arrow" | "play" }) {
+function ActionDot({ variant, href }: { variant: "arrow" | "play"; href?: string }) {
+  const style: React.CSSProperties = {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    width: 32,
+    height: 32,
+    borderRadius: "50%",
+    background: "var(--lime)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+  const icon = variant === "arrow" ? <ArrowIcon /> : <PlayIcon />;
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="portfolio-action-dot"
+        style={style}
+      >
+        {icon}
+      </a>
+    );
+  }
+
   return (
-    <div
-      className="portfolio-action-dot"
-      style={{
-        position: "absolute",
-        bottom: 20,
-        right: 20,
-        width: 32,
-        height: 32,
-        borderRadius: "50%",
-        background: "var(--lime)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {variant === "arrow" ? <ArrowIcon /> : <PlayIcon />}
+    <div className="portfolio-action-dot" style={style}>
+      {icon}
     </div>
   );
 }
@@ -51,10 +65,12 @@ function CardBase({
   children,
   spanClass,
   lime,
+  image,
 }: {
   children: React.ReactNode;
   spanClass: string;
   lime?: boolean;
+  image?: string;
 }) {
   return (
     <div
@@ -64,9 +80,13 @@ function CardBase({
         minHeight: 260,
         borderRadius: 20,
         border: "1px solid var(--line)",
-        background: lime
+        background: image
+          ? `linear-gradient(180deg, rgba(8,9,10,0.1) 0%, rgba(8,9,10,0.92) 100%), url(${image})`
+          : lime
           ? "linear-gradient(150deg, var(--lime-2) 0%, var(--lime) 100%)"
           : "rgba(255,255,255,0.03)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         padding: 28,
         display: "flex",
         flexDirection: "column",
@@ -134,47 +154,30 @@ export function PortfolioSection() {
             gap: 16,
           }}
         >
-          {/* Card 1 — Nômade: metric card */}
-          <CardBase spanClass="portfolio-span-1">
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <StudioMark size={20} />
-              <span
-                style={{
-                  fontFamily: "var(--ff-heading)",
-                  fontWeight: 600,
-                  fontSize: 16,
-                  color: "var(--white)",
-                }}
-              >
-                Nômade
-              </span>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontFamily: "var(--ff-heading)",
-                  fontWeight: 700,
-                  fontSize: "clamp(36px, 4vw, 48px)",
-                  color: "var(--white)",
-                  lineHeight: 1,
-                  marginBottom: 8,
-                }}
-              >
-                40%
-              </div>
-              <p
-                style={{
-                  margin: 0,
-                  color: "var(--muted)",
-                  fontSize: 14,
-                  lineHeight: 1.4,
-                  maxWidth: "70%",
-                }}
-              >
-                Aumento em reservas online
-              </p>
-            </div>
-            <ActionDot variant="arrow" />
+          {/* Card 1 — Zendrine: real project, image card */}
+          <CardBase spanClass="portfolio-span-1" image="/images/zendrine.webp">
+            <span
+              style={{
+                fontFamily: "var(--ff-heading)",
+                fontWeight: 600,
+                fontSize: 16,
+                color: "var(--white)",
+              }}
+            >
+              Zendrine
+            </span>
+            <p
+              style={{
+                margin: 0,
+                color: "var(--muted)",
+                fontSize: 14,
+                lineHeight: 1.4,
+                maxWidth: "85%",
+              }}
+            >
+              Curso e mentoria para profissionais de estética
+            </p>
+            <ActionDot variant="arrow" href="https://zendrine.com.br/cursos/" />
           </CardBase>
 
           {/* Card 2 — Vértice: description card */}
