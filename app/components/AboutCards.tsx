@@ -199,6 +199,7 @@ export function AboutCards() {
 
   return (
     <section
+      id="aboutSection"
       ref={sectionRef}
       style={{
         position: "relative",

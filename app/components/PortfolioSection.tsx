@@ -88,6 +88,7 @@ export function PortfolioSection() {
 
   return (
     <section
+      id="portfolioSection"
       ref={sectionRef}
       style={{
         position: "relative",

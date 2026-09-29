@@ -37,9 +37,9 @@ export function HeroSection() {
   const eggRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollToProcess = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToId = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.getElementById("processSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   useEffect(() => {
@@ -214,15 +214,22 @@ export function HeroSection() {
 
           {/* Center nav */}
           <div className="header-nav-center" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <a href="#" className="nav-link">Trabalhos</a>
-            <a href="#" className="nav-link">Serviços</a>
-            <a href="#" className="nav-link">Estúdio</a>
-            <a href="#processSection" className="nav-link" onClick={scrollToProcess}>Processo</a>
+            <a href="#portfolioSection" className="nav-link" onClick={scrollToId("portfolioSection")}>Trabalhos</a>
+            <a href="#deliverablesSection" className="nav-link" onClick={scrollToId("deliverablesSection")}>Serviços</a>
+            <a href="#aboutSection" className="nav-link" onClick={scrollToId("aboutSection")}>Estúdio</a>
+            <a href="#processSection" className="nav-link" onClick={scrollToId("processSection")}>Processo</a>
           </div>
 
           {/* Right */}
           <div className="header-right" style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <a href="#" className="nav-link header-contato-link" style={{ letterSpacing: "0.08em" }}>Contato</a>
+            <a
+              href="#siteFooter"
+              className="nav-link header-contato-link"
+              style={{ letterSpacing: "0.08em" }}
+              onClick={scrollToId("siteFooter")}
+            >
+              Contato
+            </a>
             <div
               className="btn-primary header-cta"
               style={{
@@ -260,20 +267,56 @@ export function HeroSection() {
 
         {/* Mobile nav panel */}
         <div className={"mobile-nav-panel" + (menuOpen ? " open" : "")}>
-          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Trabalhos</a>
-          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Serviços</a>
-          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Estúdio</a>
+          <a
+            href="#portfolioSection"
+            className="nav-link"
+            onClick={(e) => {
+              setMenuOpen(false);
+              scrollToId("portfolioSection")(e);
+            }}
+          >
+            Trabalhos
+          </a>
+          <a
+            href="#deliverablesSection"
+            className="nav-link"
+            onClick={(e) => {
+              setMenuOpen(false);
+              scrollToId("deliverablesSection")(e);
+            }}
+          >
+            Serviços
+          </a>
+          <a
+            href="#aboutSection"
+            className="nav-link"
+            onClick={(e) => {
+              setMenuOpen(false);
+              scrollToId("aboutSection")(e);
+            }}
+          >
+            Estúdio
+          </a>
           <a
             href="#processSection"
             className="nav-link"
             onClick={(e) => {
               setMenuOpen(false);
-              scrollToProcess(e);
+              scrollToId("processSection")(e);
             }}
           >
             Processo
           </a>
-          <a href="#" className="nav-link" onClick={() => setMenuOpen(false)}>Contato</a>
+          <a
+            href="#siteFooter"
+            className="nav-link"
+            onClick={(e) => {
+              setMenuOpen(false);
+              scrollToId("siteFooter")(e);
+            }}
+          >
+            Contato
+          </a>
         </div>
       </div>
 

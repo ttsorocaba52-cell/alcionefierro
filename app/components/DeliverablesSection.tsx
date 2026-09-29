@@ -43,6 +43,7 @@ export function DeliverablesSection() {
 
   return (
     <section
+      id="deliverablesSection"
       style={{
         position: "relative",
         background: "var(--black)",
