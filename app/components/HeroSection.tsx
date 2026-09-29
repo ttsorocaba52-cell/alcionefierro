@@ -337,6 +337,9 @@ export function HeroSection() {
           className="fade-3"
           style={{
             width: "100%",
+            maxWidth: 920,
+            marginLeft: "auto",
+            marginRight: "auto",
             marginTop: "clamp(44px, 6vw, 76px)",
             display: "flex",
             alignItems: "center",

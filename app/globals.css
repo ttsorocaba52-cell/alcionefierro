@@ -619,6 +619,9 @@ a:hover {
   .portfolio-span-3 {
     grid-column: span 2 !important;
   }
+  .portfolio-card {
+    min-height: 230px !important;
+  }
 }
 
 @media (max-width: 480px) {
