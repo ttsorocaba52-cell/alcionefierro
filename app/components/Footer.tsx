@@ -205,7 +205,7 @@ export function Footer() {
           style={{
             position: "relative",
             overflow: "hidden",
-            height: "clamp(84px, 15vw, 220px)",
+            height: "clamp(56px, 9vw, 140px)",
           }}
         >
           <div className="grain-layer" />
@@ -216,13 +216,13 @@ export function Footer() {
                 fontFamily: "var(--ff-heading)",
                 fontWeight: 700,
                 textTransform: "uppercase",
-                fontSize: "clamp(64px, 20vw, 300px)",
+                fontSize: "clamp(38px, 11vw, 180px)",
                 lineHeight: 1,
                 letterSpacing: "-0.02em",
                 color: "rgba(255,60,1,0.07)",
               }}
             >
-              Estúdio
+              Tales Martins
             </span>
           </div>
 
@@ -232,13 +232,13 @@ export function Footer() {
                 fontFamily: "var(--ff-heading)",
                 fontWeight: 700,
                 textTransform: "uppercase",
-                fontSize: "clamp(64px, 20vw, 300px)",
+                fontSize: "clamp(38px, 11vw, 180px)",
                 lineHeight: 1,
                 letterSpacing: "-0.02em",
               }}
             >
               <GradientText colors={["#3d1400", "#ff3c01", "#3d1400"]} animationSpeed={10}>
-                Estúdio
+                Tales Martins
               </GradientText>
             </span>
           </div>
