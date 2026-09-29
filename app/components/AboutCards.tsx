@@ -11,7 +11,7 @@ type CardData = {
 
 const CARDS: CardData[] = [
   {
-    index: "01 / 06",
+    index: "01 / 04",
     label: "Filosofia do Estúdio",
     text: (
       <>
@@ -22,18 +22,7 @@ const CARDS: CardData[] = [
     ),
   },
   {
-    index: "02 / 06",
-    label: "Nosso Processo",
-    text: (
-      <>
-        Estratégia vem primeiro.{" "}
-        <span className="hl">Cada pixel precisa merecer seu lugar</span>{" "}
-        antes de ir ao ar.
-      </>
-    ),
-  },
-  {
-    index: "03 / 06",
+    index: "02 / 04",
     label: "Serviço Completo",
     text: (
       <>
@@ -43,17 +32,7 @@ const CARDS: CardData[] = [
     ),
   },
   {
-    index: "04 / 06",
-    label: "Sistemas de Marca",
-    text: (
-      <>
-        Não perseguimos tendências. Construímos sistemas{" "}
-        <span className="hl">feitos para durar.</span>
-      </>
-    ),
-  },
-  {
-    index: "05 / 06",
+    index: "03 / 04",
     label: "Como Trabalhamos",
     text: (
       <>
@@ -63,7 +42,7 @@ const CARDS: CardData[] = [
     ),
   },
   {
-    index: "06 / 06",
+    index: "04 / 04",
     label: "Nossa Promessa",
     text: (
       <>
