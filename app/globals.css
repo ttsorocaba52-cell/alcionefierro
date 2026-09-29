@@ -7,8 +7,9 @@
   --muted: rgba(245, 246, 239, 0.62);
   --line: rgba(245, 246, 239, 0.14);
   --ease: cubic-bezier(0.22, 0.8, 0.32, 1);
-  --ff-heading: var(--font-space-grotesk), sans-serif;
-  --ff-body: var(--font-inter), sans-serif;
+  --ff-heading: "Space Grotesk", sans-serif;
+  --ff-body: "Inter", sans-serif;
+  --ff-wordmark: "Anton", sans-serif;
 }
 
 * {

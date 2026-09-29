@@ -205,7 +205,7 @@ export function Footer() {
           style={{
             position: "relative",
             overflow: "hidden",
-            height: "clamp(56px, 9vw, 140px)",
+            height: "clamp(64px, 11vw, 170px)",
           }}
         >
           <div className="grain-layer" />
@@ -213,12 +213,12 @@ export function Footer() {
           <div className="wordmark-text wordmark-hidden" aria-hidden="true">
             <span
               style={{
-                fontFamily: "var(--ff-heading)",
-                fontWeight: 700,
+                fontFamily: "var(--ff-wordmark)",
+                fontWeight: 400,
                 textTransform: "uppercase",
-                fontSize: "clamp(38px, 11vw, 180px)",
+                fontSize: "clamp(40px, 11.5vw, 220px)",
                 lineHeight: 1,
-                letterSpacing: "-0.02em",
+                letterSpacing: "0.01em",
                 color: "rgba(255,60,1,0.07)",
               }}
             >
@@ -229,12 +229,12 @@ export function Footer() {
           <div ref={wordmarkRevealRef} className="wordmark-text wordmark-reveal">
             <span
               style={{
-                fontFamily: "var(--ff-heading)",
-                fontWeight: 700,
+                fontFamily: "var(--ff-wordmark)",
+                fontWeight: 400,
                 textTransform: "uppercase",
-                fontSize: "clamp(38px, 11vw, 180px)",
+                fontSize: "clamp(40px, 11.5vw, 220px)",
                 lineHeight: 1,
-                letterSpacing: "-0.02em",
+                letterSpacing: "0.01em",
               }}
             >
               <GradientText colors={["#3d1400", "#ff3c01", "#3d1400"]} animationSpeed={10}>
