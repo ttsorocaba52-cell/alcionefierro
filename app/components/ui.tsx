@@ -1,3 +1,5 @@
+import { linkProps } from "../site";
+
 export function ArrowUpRight({ size = 10 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -6,13 +8,25 @@ export function ArrowUpRight({ size = 10 }: { size?: number }) {
   );
 }
 
-export function GoldButton({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a className="gold-btn" href={href} target="_blank" rel="noopener noreferrer">
+export function GoldButton({ href, children }: { href?: string; children: React.ReactNode }) {
+  const inner = (
+    <>
       <span>{children}</span>
       <span className="gold-btn-dot">
         <ArrowUpRight />
       </span>
+    </>
+  );
+  if (!href) {
+    return (
+      <button type="button" className="gold-btn">
+        {inner}
+      </button>
+    );
+  }
+  return (
+    <a className="gold-btn" href={href} {...linkProps(href)}>
+      {inner}
     </a>
   );
 }

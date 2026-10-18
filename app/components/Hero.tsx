@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "../site";
+import { CONTACT_HREF, linkProps } from "../site";
 import { GoldButton } from "./ui";
 
 const NAV = [
@@ -56,8 +56,15 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
       </defs>
 
       <rect x="250" y="40" width="384" height="320" fill={`url(#glow-${id})`} />
-      {CHEVRON_OFFSETS.map((dx) => (
-        <polygon key={dx} points={CHEVRON} transform={`translate(${dx} 0)`} fill={`url(#fade-${id})`} />
+      {CHEVRON_OFFSETS.map((dx, i) => (
+        <g key={dx} transform={`translate(${dx} 0)`}>
+          <polygon
+            className="chev"
+            style={{ animationDelay: `${0.15 + i * 0.18}s` }}
+            points={CHEVRON}
+            fill={`url(#fade-${id})`}
+          />
+        </g>
       ))}
       <g mask={`url(#photo-mask-h-${id})`}>
         <image
@@ -75,21 +82,22 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
 
 export function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" data-hero>
+      <div className="hero-spot" aria-hidden="true" />
       <HeroArt id="desktop" viewBox="0 0 634 360" />
 
-      <header className="nav">
+      <header className="nav" data-nav>
         <a className="nav-logo" href="#">
           Alcione Fierro
         </a>
         <nav className="nav-links">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a key={item.href} href={item.href} data-nav-link>
               {item.label}
             </a>
           ))}
         </nav>
-        <a className="nav-cta" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+        <a className="nav-cta" href={CONTACT_HREF} {...linkProps(CONTACT_HREF)}>
           Conversa estratégica <span aria-hidden="true">→</span>
         </a>
       </header>
@@ -107,7 +115,7 @@ export function Hero() {
           Estratégia de marca, comunicação e vendas para especialistas que têm conhecimento de valor, mas ainda
           não conseguem comunicá-lo com clareza.
         </p>
-        <GoldButton href={WHATSAPP_URL}>Agendar conversa estratégica</GoldButton>
+        <GoldButton href={CONTACT_HREF}>Agendar conversa estratégica</GoldButton>
       </div>
 
       <HeroArt id="mobile" viewBox="196 0 438 360" />

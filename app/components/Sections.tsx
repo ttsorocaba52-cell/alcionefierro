@@ -1,4 +1,4 @@
-import { INSTAGRAM_URL, WHATSAPP_URL } from "../site";
+import { CONTACT_HREF, INSTAGRAM_URL, WHATSAPP_URL, linkProps } from "../site";
 import { ArrowUpRight, ChapterHead, GoldButton } from "./ui";
 
 const PROBLEMS = [
@@ -127,7 +127,7 @@ export function AudienceSection() {
           <span>O que busca</span>
         </div>
         {AUDIENCE.map(([profile, goal]) => (
-          <a key={profile} className="audience-row" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+          <a key={profile} className="audience-row" href={CONTACT_HREF} {...linkProps(CONTACT_HREF)}>
             <strong>{profile}</strong>
             <span>{goal}</span>
             <span className="audience-dot">
@@ -170,7 +170,7 @@ export function AboutSection() {
 
 export function CtaSection() {
   return (
-    <section className="cta">
+    <section id="contato" className="cta">
       <div className="cta-inner">
         <p className="cta-eyebrow">Próximo passo</p>
         <h2 className="h2 cta-title">
