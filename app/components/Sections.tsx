@@ -2,11 +2,26 @@ import { CONTACT_HREF, INSTAGRAM_URL, WHATSAPP_URL, linkProps } from "../site";
 import { ArrowUpRight, ChapterHead, GoldButton } from "./ui";
 
 const PROBLEMS = [
-  "Muitas ideias, pouca organização.",
-  "Um posicionamento que não diferencia.",
-  "Conhecimento que não vira conteúdo estratégico.",
-  "Serviços e ofertas sem estrutura clara.",
-  "A sensação de que poderia crescer mais, mas falta direção.",
+  {
+    title: "Muitas ideias, pouca organização.",
+    more: "Você tem assunto de sobra, mas sem um fio condutor cada conteúdo parece um recomeço. Organizar a mensagem vem antes de produzir mais.",
+  },
+  {
+    title: "Um posicionamento que não diferencia.",
+    more: "Quando você fala o que todo mundo fala, o cliente compara por preço. Diferenciar é escolher o ângulo que só você pode defender.",
+  },
+  {
+    title: "Conhecimento que não vira conteúdo estratégico.",
+    more: "Postar muito não é o mesmo que construir autoridade. Conteúdo estratégico leva o público da curiosidade até a decisão de contratar.",
+  },
+  {
+    title: "Serviços e ofertas sem estrutura clara.",
+    more: "Se ninguém entende o que você vende, para quem e por quanto, a conversa trava. Oferta clara encurta o caminho até o “sim”.",
+  },
+  {
+    title: "A sensação de que poderia crescer mais, mas falta direção.",
+    more: "Esforço sem rota cansa e não escala. Com um plano claro, cada ação aponta para o mesmo lugar: mais autoridade e mais clientes certos.",
+  },
 ];
 
 const PILLARS = [
@@ -66,9 +81,15 @@ export function ProblemSection() {
         </p>
         <ol className="problem-list">
           {PROBLEMS.map((item, i) => (
-            <li key={item}>
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              {item}
+            <li key={item.title} tabIndex={0}>
+              <span className="problem-num">{String(i + 1).padStart(2, "0")}</span>
+              <span className="problem-title">{item.title}</span>
+              <span className="problem-plus" aria-hidden="true" />
+              <div className="problem-more">
+                <div>
+                  <p>{item.more}</p>
+                </div>
+              </div>
             </li>
           ))}
         </ol>

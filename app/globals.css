@@ -403,9 +403,8 @@ img {
   border-top: 1px solid var(--line);
 }
 .problem-list li {
-  display: flex;
-  align-items: center;
-  height: calc(25 * var(--u));
+  display: grid;
+  grid-template-columns: calc(26 * var(--u)) 1fr;
   border-bottom: 1px solid var(--line);
   font-size: calc(7.2 * var(--u));
   color: var(--text);
@@ -413,9 +412,13 @@ img {
 .problem-list li:last-child {
   border-bottom: 0;
 }
-.problem-list span {
-  width: calc(26 * var(--u));
-  flex: none;
+.problem-num,
+.problem-title {
+  display: flex;
+  align-items: center;
+  min-height: calc(25 * var(--u));
+}
+.problem-num {
   font-size: calc(3.3 * var(--u));
   color: var(--gold);
 }
@@ -744,12 +747,15 @@ img {
     font-size: 16px;
   }
   .problem-list li {
-    height: auto;
-    padding: 16px 0;
+    grid-template-columns: 40px 1fr;
     font-size: 15px;
   }
-  .problem-list span {
-    width: 40px;
+  .problem-num,
+  .problem-title {
+    min-height: 0;
+    padding: 16px 0;
+  }
+  .problem-num {
     font-size: 11px;
   }
 
@@ -1031,11 +1037,12 @@ img {
   animation: rise 0.9s var(--ease) var(--d, 0ms) backwards;
 }
 
-/* 01 · lista de problemas */
+/* 01 · lista de problemas — o tópico abre com uma ideia mais profunda */
 .problem-list li {
   position: relative;
   isolation: isolate;
   cursor: default;
+  outline: none;
   transition: padding-left 0.45s var(--ease), color 0.3s var(--ease);
 }
 .problem-list li::before {
@@ -1047,12 +1054,87 @@ img {
   opacity: 0;
   transition: opacity 0.4s var(--ease);
 }
-.problem-list li:hover {
+.problem-list li:hover,
+.problem-list li:focus-within {
   padding-left: calc(5 * var(--u));
   color: var(--white);
 }
-.problem-list li:hover::before {
+.problem-list li:hover::before,
+.problem-list li:focus-within::before {
   opacity: 1;
+}
+/* indicador "+" que vira "×" quando abre */
+.problem-plus {
+  position: absolute;
+  top: calc(12.5 * var(--u));
+  right: calc(4 * var(--u));
+  width: calc(7 * var(--u));
+  height: calc(7 * var(--u));
+  margin-top: calc(-3.5 * var(--u));
+  opacity: 0.55;
+  transition: transform 0.5s var(--ease), opacity 0.3s var(--ease);
+}
+.problem-plus::before,
+.problem-plus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--gold);
+}
+.problem-plus::after {
+  transform: rotate(90deg);
+}
+.problem-list li:hover .problem-plus,
+.problem-list li:focus-within .problem-plus {
+  transform: rotate(135deg);
+  opacity: 1;
+}
+/* texto aprofundado: abre de 0 até a altura natural */
+.problem-more {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.55s var(--ease), opacity 0.45s var(--ease);
+}
+.problem-more > div {
+  overflow: hidden;
+  min-height: 0;
+}
+.problem-more p {
+  max-width: calc(200 * var(--u));
+  padding: 0 calc(14 * var(--u)) calc(9 * var(--u)) 0;
+  font-size: calc(5.8 * var(--u));
+  line-height: 1.7;
+  color: var(--muted);
+}
+.problem-list li:hover .problem-more,
+.problem-list li:focus-within .problem-more {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.problem-list li:hover .problem-title,
+.problem-list li:focus-within .problem-title {
+  color: var(--gold);
+}
+.problem-title {
+  transition: color 0.4s var(--ease);
+}
+@media (max-width: 900px) {
+  .problem-plus {
+    top: 26px;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    right: 0;
+  }
+  .problem-more p {
+    font-size: 14px;
+    padding: 0 28px 16px 0;
+  }
 }
 
 /* 02 · pilares */
