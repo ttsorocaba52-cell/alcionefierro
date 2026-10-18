@@ -23,7 +23,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#problema">
+          Pular para o conteúdo
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

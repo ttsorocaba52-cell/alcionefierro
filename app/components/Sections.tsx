@@ -180,7 +180,7 @@ export function AboutSection() {
   return (
     <section id="sobre" className="about">
       <div className="about-photo">
-        <img src="/images/alcione-sobre.webp" alt="Alcione Fierro" />
+        <img src="/images/alcione-sobre.webp" alt="Alcione Fierro trabalhando no notebook" width={1086} height={1448} loading="lazy" decoding="async" />
       </div>
       <div className="about-text">
         <ChapterHead number="04" label="Quem é Alcione" />

@@ -1,4 +1,5 @@
 import { CONTACT_HREF, linkProps } from "../site";
+import { MobileMenu } from "./MobileMenu";
 import { GoldButton } from "./ui";
 
 const NAV = [
@@ -80,14 +81,14 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
 
 export function Hero() {
   return (
-    <section className="hero">
+    <section id="inicio" className="hero">
       <HeroArt id="desktop" viewBox="0 0 634 360" />
 
       <header className="nav" data-nav>
-        <a className="nav-logo" href="#">
+        <a className="nav-logo" href="#inicio" aria-label="Alcione Fierro, voltar ao início">
           Alcione Fierro
         </a>
-        <nav className="nav-links">
+        <nav className="nav-links" aria-label="Seções da página">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} data-nav-link>
               {item.label}
@@ -97,6 +98,7 @@ export function Hero() {
         <a className="nav-cta" href={CONTACT_HREF} {...linkProps(CONTACT_HREF)}>
           Conversa estratégica <span aria-hidden="true">→</span>
         </a>
+        <MobileMenu items={NAV} />
       </header>
 
       <div className="hero-content">
