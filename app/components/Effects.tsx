@@ -55,9 +55,8 @@ export function Effects() {
       cleanups.push(() => io.disconnect());
     }
 
-    // Barra de progresso, menu com fundo ao rolar e parallax da foto.
+    // Barra de progresso e menu com fundo ao rolar.
     const nav = document.querySelector<HTMLElement>("[data-nav]");
-    const hero = document.querySelector<HTMLElement>("[data-hero]");
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -67,7 +66,6 @@ export function Effects() {
         const max = root.scrollHeight - window.innerHeight;
         root.style.setProperty("--progress", String(max > 0 ? y / max : 0));
         nav?.classList.toggle("is-stuck", y > 40);
-        if (hero && !reduce) hero.style.setProperty("--scroll", String(Math.min(y, hero.offsetHeight)));
         ticking = false;
       });
     };
@@ -92,21 +90,6 @@ export function Effects() {
     cleanups.push(() => spy.disconnect());
 
     if (fine && !reduce) {
-      // Hero: luz e foto seguem o mouse.
-      if (hero) {
-        const onMove = (e: MouseEvent) => {
-          const r = hero.getBoundingClientRect();
-          const nx = (e.clientX - r.left) / r.width - 0.5;
-          const ny = (e.clientY - r.top) / r.height - 0.5;
-          hero.style.setProperty("--mx", `${(nx + 0.5) * 100}%`);
-          hero.style.setProperty("--my", `${(ny + 0.5) * 100}%`);
-          hero.style.setProperty("--px", String(nx));
-          hero.style.setProperty("--py", String(ny));
-        };
-        hero.addEventListener("mousemove", onMove);
-        cleanups.push(() => hero.removeEventListener("mousemove", onMove));
-      }
-
       // Botões magnéticos.
       document.querySelectorAll<HTMLElement>(".gold-btn").forEach((btn) => {
         const move = (e: MouseEvent) => {

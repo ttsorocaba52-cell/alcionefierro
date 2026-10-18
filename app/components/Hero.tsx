@@ -47,7 +47,7 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
         </mask>
       </defs>
 
-      <g className="layer-far">
+      <g>
         <image className="hero-glow" href="/images/hero-glow.webp" {...GLOW} />
         <g mask={`url(#chev-mask-${id})`}>
           {CHEVRON_LEFTS.map((x, i) => (
@@ -64,7 +64,7 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
           ))}
         </g>
       </g>
-      <g className="layer-near" mask={`url(#person-mask-${id})`}>
+      <g mask={`url(#person-mask-${id})`}>
         <image className="hero-person" href="/images/alcione-hero.webp" {...PERSON} />
       </g>
     </svg>
@@ -73,8 +73,7 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
 
 export function Hero() {
   return (
-    <section className="hero" data-hero>
-      <div className="hero-spot" aria-hidden="true" />
+    <section className="hero">
       <HeroArt id="desktop" viewBox="0 0 634 360" />
 
       <header className="nav" data-nav>

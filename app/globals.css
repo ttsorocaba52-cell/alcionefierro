@@ -998,36 +998,6 @@ img {
   animation: fadeIn 2s var(--ease) 0.2s backwards;
 }
 
-/* Hero: luz e parallax com o mouse */
-.hero-spot {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s var(--ease);
-  background: radial-gradient(
-    circle calc(150 * var(--u)) at var(--mx, 70%) var(--my, 40%),
-    rgba(201, 167, 92, 0.16),
-    transparent 70%
-  );
-}
-.hero:hover .hero-spot {
-  opacity: 1;
-}
-@media (hover: hover) and (pointer: fine) {
-  .layer-far {
-    transform: translate(calc(var(--px, 0) * -7px), calc(var(--py, 0) * -4px));
-    transition: transform 0.45s ease-out;
-  }
-  .layer-near {
-    transform: translate(calc(var(--px, 0) * 4px), calc(var(--py, 0) * 2.5px));
-    transition: transform 0.35s ease-out;
-  }
-  .hero-content {
-    transform: translate3d(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 6px - var(--scroll, 0) * 0.06px), 0);
-    transition: transform 0.35s ease-out;
-  }
-}
 .hero-steps li {
   position: relative;
   cursor: default;
