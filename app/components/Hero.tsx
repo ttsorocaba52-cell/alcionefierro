@@ -11,9 +11,13 @@ const NAV = [
 const STEPS = ["Conhecimento", "Clareza", "Autoridade", "Oportunidades", "Negócio"];
 
 // Coordenadas no mesmo sistema do layout original (634 × 360).
-// Cada chevron é a mesma forma deslocada no eixo x.
-const CHEVRON = "245.5,0 272.5,0 383.1,163.9 187,360 163,360 357.4,165.7";
-const CHEVRON_OFFSETS = [0, 161, 306];
+// O chevron tem a altura do hero; os três são o mesmo arquivo deslocado em x.
+const CHEVRON_W = (360 * 668) / 1080;
+const CHEVRON_LEFTS = [163, 324, 469];
+
+// A pessoa fica ancorada na base do hero.
+const PERSON = { x: 298, y: 25, width: 224, height: 335 };
+const GLOW = { x: 303, y: 25, width: 330, height: 329 };
 
 function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
   return (
@@ -24,57 +28,44 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id={`fade-${id}`} x1="0" y1="0" x2="0" y2="360" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#c9a75c" stopOpacity="0.12" />
-          <stop offset="0.17" stopColor="#c9a75c" />
-          <stop offset="0.74" stopColor="#c9a75c" />
-          <stop offset="0.97" stopColor="#c9a75c" stopOpacity="0.08" />
+        <linearGradient id={`chev-fade-${id}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#fff" stopOpacity="0.15" />
+          <stop offset="0.17" stopColor="#fff" />
+          <stop offset="0.8" stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0.1" />
         </linearGradient>
-        <radialGradient id={`glow-${id}`} cx="468" cy="190" r="125" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#c9a75c" stopOpacity="0.38" />
-          <stop offset="0.55" stopColor="#c9a75c" stopOpacity="0.1" />
-          <stop offset="1" stopColor="#c9a75c" stopOpacity="0" />
-        </radialGradient>
-        <linearGradient id={`photo-mask-grad-${id}`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#000" />
-          <stop offset="0.12" stopColor="#fff" />
-          <stop offset="0.92" stopColor="#fff" />
-          <stop offset="1" stopColor="#000" />
-        </linearGradient>
-        <linearGradient id={`photo-mask-v-${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#000" />
-          <stop offset="0.06" stopColor="#fff" />
+        <linearGradient id={`person-fade-${id}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#fff" />
           <stop offset="0.9" stopColor="#fff" />
-          <stop offset="1" stopColor="#000" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
-        <mask id={`photo-mask-h-${id}`} maskUnits="userSpaceOnUse" x="230" y="0" width="404" height="360">
-          <rect x="230" y="0" width="404" height="360" fill={`url(#photo-mask-grad-${id})`} />
+        <mask id={`chev-mask-${id}`} maskUnits="userSpaceOnUse" x="0" y="0" width="634" height="360">
+          <rect width="634" height="360" fill={`url(#chev-fade-${id})`} />
         </mask>
-        <mask id={`photo-mask-${id}`} maskUnits="userSpaceOnUse" x="230" y="0" width="404" height="360">
-          <rect x="230" y="0" width="404" height="360" fill={`url(#photo-mask-v-${id})`} />
+        <mask id={`person-mask-${id}`} maskUnits="userSpaceOnUse" x="0" y="0" width="634" height="360">
+          <rect x={PERSON.x} y={PERSON.y} width={PERSON.width} height={PERSON.height} fill={`url(#person-fade-${id})`} />
         </mask>
       </defs>
 
-      <rect x="250" y="40" width="384" height="320" fill={`url(#glow-${id})`} />
-      {CHEVRON_OFFSETS.map((dx, i) => (
-        <g key={dx} transform={`translate(${dx} 0)`}>
-          <polygon
-            className="chev"
-            style={{ animationDelay: `${0.15 + i * 0.18}s` }}
-            points={CHEVRON}
-            fill={`url(#fade-${id})`}
-          />
+      <g className="layer-far">
+        <image className="hero-glow" href="/images/hero-glow.webp" {...GLOW} />
+        <g mask={`url(#chev-mask-${id})`}>
+          {CHEVRON_LEFTS.map((x, i) => (
+            <image
+              key={x}
+              className="chev"
+              style={{ animationDelay: `${0.15 + i * 0.18}s` }}
+              href="/images/hero-chevron.webp"
+              x={x}
+              y={0}
+              width={CHEVRON_W}
+              height={360}
+            />
+          ))}
         </g>
-      ))}
-      <g mask={`url(#photo-mask-h-${id})`}>
-        <image
-          href="/images/alcione-hero.webp"
-          x="230"
-          y="0"
-          width="404"
-          height="360"
-          mask={`url(#photo-mask-${id})`}
-        />
+      </g>
+      <g className="layer-near" mask={`url(#person-mask-${id})`}>
+        <image className="hero-person" href="/images/alcione-hero.webp" {...PERSON} />
       </g>
     </svg>
   );

@@ -991,8 +991,11 @@ img {
 .chev {
   animation: chevIn 1.2s var(--ease) both;
 }
-.hero-art image {
+.hero-person {
   animation: fadeIn 1.4s var(--ease) 0.3s backwards;
+}
+.hero-glow {
+  animation: fadeIn 2s var(--ease) 0.2s backwards;
 }
 
 /* Hero: luz e parallax com o mouse */
@@ -1012,13 +1015,12 @@ img {
   opacity: 1;
 }
 @media (hover: hover) and (pointer: fine) {
-  .hero-art-desktop {
-    transform: translate3d(
-        calc(var(--px, 0) * -14px),
-        calc(var(--py, 0) * -10px + var(--scroll, 0) * 0.1px),
-        0
-      )
-      scale(1.035);
+  .layer-far {
+    transform: translate(calc(var(--px, 0) * -7px), calc(var(--py, 0) * -4px));
+    transition: transform 0.45s ease-out;
+  }
+  .layer-near {
+    transform: translate(calc(var(--px, 0) * 4px), calc(var(--py, 0) * 2.5px));
     transition: transform 0.35s ease-out;
   }
   .hero-content {
