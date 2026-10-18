@@ -4,7 +4,7 @@ export const WHATSAPP_URL: string | undefined =
   "https://wa.me/5551993981347?text=" +
   encodeURIComponent("Olá, Alcione! Vim pelo site e quero agendar uma conversa estratégica.");
 
-export const INSTAGRAM_URL = "https://instagram.com/";
+export const INSTAGRAM_URL = "https://www.instagram.com/alcionefierro";
 
 export const CONTACT_HREF = WHATSAPP_URL ?? "#contato";
 
