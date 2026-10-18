@@ -90,6 +90,33 @@ export function Effects() {
     cleanups.push(() => spy.disconnect());
 
     if (fine && !reduce) {
+      // Lista "Para quem": a faixa dourada entra e sai pelo lado do mouse.
+      const table = document.querySelector<HTMLElement>(".audience-table");
+      table?.querySelectorAll<HTMLElement>(".audience-row").forEach((row) => {
+        const side = (e: PointerEvent) => {
+          const r = row.getBoundingClientRect();
+          return e.clientX < r.left + r.width / 2 ? "l" : "r";
+        };
+        const enter = (e: PointerEvent) => {
+          if (e.pointerType === "touch") return;
+          row.dataset.dir = side(e);
+          void row.offsetWidth; // aplica o lado de entrada antes de ligar a faixa
+          row.classList.add("is-on");
+          table.classList.add("has-on");
+        };
+        const leave = (e: PointerEvent) => {
+          row.dataset.dir = side(e);
+          row.classList.remove("is-on");
+          table.classList.remove("has-on");
+        };
+        row.addEventListener("pointerenter", enter);
+        row.addEventListener("pointerleave", leave);
+        cleanups.push(() => {
+          row.removeEventListener("pointerenter", enter);
+          row.removeEventListener("pointerleave", leave);
+        });
+      });
+
       // Foto "Sobre" inclina com o mouse.
       const photo = document.querySelector<HTMLElement>(".about-photo");
       if (photo) {

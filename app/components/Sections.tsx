@@ -128,6 +128,18 @@ export function AudienceSection() {
         </div>
         {AUDIENCE.map(([profile, goal]) => (
           <a key={profile} className="audience-row" href={CONTACT_HREF} {...linkProps(CONTACT_HREF)}>
+            <span className="audience-marquee" aria-hidden="true">
+              {[0, 1].map((n) => (
+                <span key={n}>
+                  {Array.from({ length: 6 }, (_, k) => (
+                    <b key={k}>
+                      {profile}
+                      <i>✦</i>
+                    </b>
+                  ))}
+                </span>
+              ))}
+            </span>
             <strong>{profile}</strong>
             <span>{goal}</span>
             <span className="audience-dot">

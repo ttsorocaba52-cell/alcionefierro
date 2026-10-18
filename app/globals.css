@@ -469,6 +469,7 @@ img {
 
 /* 03 · Para quem */
 .audience {
+  overflow-x: clip;
   padding-bottom: calc(46 * var(--u));
 }
 .audience-head {
@@ -517,7 +518,7 @@ img {
   letter-spacing: -0.01em;
   transition: color 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.audience-row > span:not(.audience-dot) {
+.audience-row > span:not(.audience-dot):not(.audience-marquee) {
   font-size: calc(6.4 * var(--u));
   color: var(--muted);
 }
@@ -534,15 +535,6 @@ img {
 .audience-dot svg {
   width: calc(4.5 * var(--u));
   height: calc(4.5 * var(--u));
-}
-.audience-row:hover strong {
-  color: var(--gold);
-  transform: translateX(calc(3 * var(--u)));
-}
-.audience-row:hover .audience-dot {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--bg);
 }
 
 /* 04 · Quem é Alcione */
@@ -809,7 +801,7 @@ img {
   .audience-row strong {
     font-size: 21px;
   }
-  .audience-row > span:not(.audience-dot) {
+  .audience-row > span:not(.audience-dot):not(.audience-marquee) {
     grid-row: 2;
     font-size: 14px;
   }
@@ -1099,35 +1091,104 @@ img {
   color: var(--gold);
 }
 
-/* 03 · para quem */
+/* 03 · para quem — faixa dourada que entra pelo lado do mouse */
+.audience-table {
+  --wipe-hidden: inset(0 100% 0 0);
+}
 .audience-row {
   position: relative;
   isolation: isolate;
+  transition: opacity 0.45s var(--ease);
+}
+.audience-row[data-dir="r"] {
+  --wipe-hidden: inset(0 0 0 100%);
 }
 .audience-row::before {
   content: "";
   position: absolute;
-  inset: 0 calc(-8 * var(--u));
+  inset: 0 calc(-12 * var(--u));
+  z-index: -2;
+  border-radius: calc(6 * var(--u));
+  background: var(--gold);
+  clip-path: var(--wipe-hidden, inset(0 100% 0 0));
+  transition: clip-path 0.55s var(--ease);
+}
+.audience-row.is-on::before,
+.audience-row:focus-visible::before {
+  clip-path: inset(0 0 0 0);
+}
+/* Nome do perfil repetido, rolando ao fundo como uma marquise */
+.audience-marquee {
+  position: absolute;
+  inset: 0 calc(-12 * var(--u));
   z-index: -1;
-  border-radius: calc(4 * var(--u));
-  background: linear-gradient(90deg, rgba(201, 167, 92, 0.08), transparent 85%);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: calc(6 * var(--u));
+  pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s var(--ease);
+  transition: opacity 0.5s var(--ease) 0.1s;
 }
-.audience-row:hover::before {
-  opacity: 1;
+.audience-marquee span {
+  flex: none;
+  display: flex;
+  font-family: var(--ff-heading);
+  font-weight: 800;
+  font-size: calc(30 * var(--u));
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #121a1c;
+  animation: marquee 18s linear infinite;
 }
-.audience-row > span:not(.audience-dot) {
-  transition: color 0.3s var(--ease);
+.audience-marquee i {
+  font-style: normal;
+  padding: 0 calc(8 * var(--u));
+  font-size: 0.5em;
 }
-.audience-row:hover > span:not(.audience-dot) {
-  color: var(--white);
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+.audience-row.is-on .audience-marquee {
+  opacity: 0.12;
+}
+.audience-row strong,
+.audience-row > span:not(.audience-dot):not(.audience-marquee) {
+  transition: color 0.3s var(--ease) 0.05s, transform 0.5s var(--ease);
+}
+.audience-row.is-on strong,
+.audience-row:focus-visible strong {
+  color: #121a1c;
+  transform: translateX(calc(4 * var(--u)));
+}
+.audience-row.is-on > span:not(.audience-dot):not(.audience-marquee),
+.audience-row:focus-visible > span:not(.audience-dot):not(.audience-marquee) {
+  color: rgba(18, 26, 28, 0.82);
+}
+.audience-row.is-on .audience-dot,
+.audience-row:focus-visible .audience-dot {
+  background: #121a1c;
+  border-color: #121a1c;
+  color: var(--gold);
 }
 .audience-dot svg {
   transition: transform 0.4s var(--ease);
 }
-.audience-row:hover .audience-dot svg {
-  transform: rotate(45deg) scale(1.2);
+.audience-row.is-on .audience-dot svg {
+  transform: rotate(45deg) scale(1.25);
+}
+/* As outras linhas recuam enquanto uma está em foco */
+.audience-table.has-on .audience-row:not(.is-on) {
+  opacity: 0.3;
+}
+@media (max-width: 900px) {
+  .audience-marquee {
+    display: none;
+  }
 }
 
 /* 04 · foto inclina e dá zoom */
