@@ -1,21 +1,15 @@
-import { HeroSection } from "./components/HeroSection";
-import { AboutCards } from "./components/AboutCards";
-import { ProcessSection } from "./components/ProcessSection";
-import { DeliverablesSection } from "./components/DeliverablesSection";
-import { PortfolioSection } from "./components/PortfolioSection";
-import { Footer } from "./components/Footer";
+import { Hero } from "./components/Hero";
+import { AboutSection, AudienceSection, CtaSection, PillarsSection, ProblemSection } from "./components/Sections";
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <HeroSection />
-        <AboutCards />
-        <ProcessSection />
-        <DeliverablesSection />
-        <PortfolioSection />
-      </main>
-      <Footer />
-    </>
+    <main>
+      <Hero />
+      <ProblemSection />
+      <PillarsSection />
+      <AudienceSection />
+      <AboutSection />
+      <CtaSection />
+    </main>
   );
 }
