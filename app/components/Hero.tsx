@@ -58,7 +58,7 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
         </mask>
       </defs>
 
-      <image className="hero-glow" href="/images/hero-glow.webp" opacity="0.9" {...GLOW} />
+      <image className="hero-glow" href="/images/hero-glow.webp" opacity="0.45" {...GLOW} />
       <g mask={`url(#chev-mask-${id})`}>
         {CHEVRONS.map((c, i) => (
           <image
