@@ -292,13 +292,13 @@ img {
   left: 3.94vw;
   top: calc(322 * var(--u));
   display: flex;
-  gap: calc(9 * var(--u));
+  gap: calc(5 * var(--u));
 }
 .hero-steps li {
   display: flex;
   flex-direction: column;
   gap: calc(2.5 * var(--u));
-  width: calc(50 * var(--u));
+  width: calc(40 * var(--u));
   padding-top: calc(4 * var(--u));
   border-top: 1px solid var(--gold-soft);
   font-size: calc(5.4 * var(--u));
@@ -655,7 +655,7 @@ img {
     order: 2;
     width: calc(100% + 2 * var(--gutter));
     height: auto;
-    aspect-ratio: 438 / 360;
+    aspect-ratio: 438 / 384;
     margin: 28px calc(-1 * var(--gutter)) 0;
   }
   .hero-content {

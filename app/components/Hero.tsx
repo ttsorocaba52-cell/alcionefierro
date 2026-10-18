@@ -10,14 +10,22 @@ const NAV = [
 
 const STEPS = ["Conhecimento", "Clareza", "Autoridade", "Oportunidades", "Negócio"];
 
-// Coordenadas no mesmo sistema do layout original (634 × 360).
-// O chevron tem a altura do hero; os três são o mesmo arquivo deslocado em x.
-const CHEVRON_W = (360 * 668) / 1080;
-const CHEVRON_LEFTS = [163, 324, 469];
+// Coordenadas no sistema do layout (634 × 360). As posições foram medidas
+// na composição de referência (1154 × 828, encostada à direita do hero):
+// 1 px da referência = 360/828 u.
+const K = 360 / 828;
+// Deslocado 22u para a direita para a mão não cobrir a lista de passos.
+const X0 = 634 - 1154 * K + 22;
+const at = (x: number, y: number, w: number, h: number) => ({
+  x: +(X0 + x * K).toFixed(2),
+  y: +(y * K).toFixed(2),
+  width: +(w * K).toFixed(2),
+  height: +(h * K).toFixed(2),
+});
 
-// A pessoa fica ancorada na base do hero.
-const PERSON = { x: 298, y: 25, width: 224, height: 335 };
-const GLOW = { x: 303, y: 25, width: 330, height: 329 };
+const CHEVRONS = [-232, 254, 692].map((x) => at(x, -100, 668, 1080));
+const PERSON = at(180, -10, 671, 1004);
+const GLOW = at(680 - 1029 / 2, 480 - 1026 / 2, 1029, 1026);
 
 function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
   return (
@@ -30,39 +38,34 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
       <defs>
         <linearGradient id={`chev-fade-${id}`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#fff" stopOpacity="0.15" />
-          <stop offset="0.17" stopColor="#fff" />
-          <stop offset="0.8" stopColor="#fff" />
+          <stop offset="0.12" stopColor="#fff" />
+          <stop offset="0.9" stopColor="#fff" />
           <stop offset="1" stopColor="#fff" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient id={`person-fade-${id}`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#fff" />
-          <stop offset="0.9" stopColor="#fff" />
+          <stop offset="0.93" stopColor="#fff" />
           <stop offset="1" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
-        <mask id={`chev-mask-${id}`} maskUnits="userSpaceOnUse" x="0" y="0" width="634" height="360">
-          <rect width="634" height="360" fill={`url(#chev-fade-${id})`} />
+        <mask id={`chev-mask-${id}`} maskUnits="userSpaceOnUse" x="0" y="-60" width="634" height="420">
+          <rect y="0" width="634" height="360" fill={`url(#chev-fade-${id})`} />
         </mask>
-        <mask id={`person-mask-${id}`} maskUnits="userSpaceOnUse" x="0" y="0" width="634" height="360">
-          <rect x={PERSON.x} y={PERSON.y} width={PERSON.width} height={PERSON.height} fill={`url(#person-fade-${id})`} />
+        <mask id={`person-mask-${id}`} maskUnits="userSpaceOnUse" x="0" y="-60" width="634" height="420">
+          <rect x={PERSON.x} y="-10" width={PERSON.width} height="370" fill={`url(#person-fade-${id})`} />
         </mask>
       </defs>
 
-      <g>
-        <image className="hero-glow" href="/images/hero-glow.webp" {...GLOW} />
-        <g mask={`url(#chev-mask-${id})`}>
-          {CHEVRON_LEFTS.map((x, i) => (
-            <image
-              key={x}
-              className="chev"
-              style={{ animationDelay: `${0.15 + i * 0.18}s` }}
-              href="/images/hero-chevron.webp"
-              x={x}
-              y={0}
-              width={CHEVRON_W}
-              height={360}
-            />
-          ))}
-        </g>
+      <image className="hero-glow" href="/images/hero-glow.webp" {...GLOW} />
+      <g mask={`url(#chev-mask-${id})`}>
+        {CHEVRONS.map((c, i) => (
+          <image
+            key={c.x}
+            className="chev"
+            style={{ animationDelay: `${0.15 + i * 0.18}s` }}
+            href="/images/hero-chevron.webp"
+            {...c}
+          />
+        ))}
       </g>
       <g mask={`url(#person-mask-${id})`}>
         <image className="hero-person" href="/images/alcione-hero.webp" {...PERSON} />
@@ -108,7 +111,7 @@ export function Hero() {
         <GoldButton href={CONTACT_HREF}>Agendar conversa estratégica</GoldButton>
       </div>
 
-      <HeroArt id="mobile" viewBox="196 0 438 360" />
+      <HeroArt id="mobile" viewBox="196 -24 438 384" />
 
       <ol className="hero-steps">
         {STEPS.map((step, i) => (
