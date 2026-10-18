@@ -18,8 +18,10 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/images/alcione-hero.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/hero-chevron.webp" type="image/webp" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Manrope:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
