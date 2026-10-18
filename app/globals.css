@@ -100,7 +100,10 @@ img {
 /* ---------- Botão dourado ---------- */
 
 .gold-btn {
+  --dot: calc(14 * var(--u));
+  --pad: calc(3.5 * var(--u));
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   border: 0;
   cursor: pointer;
@@ -109,35 +112,69 @@ img {
   align-items: center;
   gap: calc(8 * var(--u));
   height: calc(21 * var(--u));
-  padding: 0 calc(3.5 * var(--u)) 0 calc(10 * var(--u));
+  padding: 0 var(--pad) 0 calc(10 * var(--u));
   border-radius: 999px;
   background: var(--gold);
   color: #1a1a14;
   font-size: calc(5.4 * var(--u));
   font-weight: 500;
   white-space: nowrap;
-  transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: transform 0.35s var(--ease);
 }
-.gold-btn:hover {
-  background: #d6b56b;
-  box-shadow: 0 0 calc(18 * var(--u)) rgba(201, 167, 92, 0.35);
-  transform: translateY(-1px);
+/* O círculo escuro da seta cresce e preenche o botão todo ao passar o mouse */
+.gold-btn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: var(--pad);
+  top: 50%;
+  width: var(--dot);
+  height: var(--dot);
+  margin-top: calc(var(--dot) / -2);
+  border-radius: 50%;
+  background: #121a1c;
+  transition: scale 0.7s var(--ease);
+}
+.gold-btn:hover::before,
+.gold-btn:focus-visible::before {
+  scale: 20;
+}
+.gold-btn:active {
+  transform: scale(0.97);
+}
+/* O texto "rola": sai pra cima e entra a versão dourada por baixo */
+.gold-btn-label {
+  display: block;
+  overflow: hidden;
+  height: 1.35em;
+  line-height: 1.35em;
+}
+.gold-btn-label > span {
+  display: block;
+  transition: transform 0.55s var(--ease);
+}
+.gold-btn-label > span + span {
+  color: var(--gold);
+}
+.gold-btn:hover .gold-btn-label > span,
+.gold-btn:focus-visible .gold-btn-label > span {
+  transform: translateY(-100%);
 }
 .gold-btn-dot {
   display: grid;
   place-items: center;
-  width: calc(14 * var(--u));
-  height: calc(14 * var(--u));
-  border-radius: 50%;
-  background: #121a1c;
+  width: var(--dot);
+  height: var(--dot);
   color: var(--white);
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.5s var(--ease), color 0.4s var(--ease);
 }
 .gold-btn-dot svg {
   width: calc(4.5 * var(--u));
   height: calc(4.5 * var(--u));
 }
-.gold-btn:hover .gold-btn-dot {
+.gold-btn:hover .gold-btn-dot,
+.gold-btn:focus-visible .gold-btn-dot {
+  color: var(--gold);
   transform: rotate(45deg);
 }
 
@@ -585,13 +622,10 @@ img {
   color: var(--text);
 }
 .cta .gold-btn {
+  --dot: calc(17 * var(--u));
   height: calc(25 * var(--u));
   padding-left: calc(12 * var(--u));
   font-size: calc(6 * var(--u));
-}
-.cta .gold-btn-dot {
-  width: calc(17 * var(--u));
-  height: calc(17 * var(--u));
 }
 
 .footer {
@@ -671,13 +705,11 @@ img {
     font-size: 15px;
   }
   .gold-btn {
+    --dot: 36px;
+    --pad: 6px;
     height: 48px;
     font-size: 14px;
-    padding: 0 6px 0 22px;
-  }
-  .gold-btn-dot {
-    width: 36px;
-    height: 36px;
+    padding: 0 var(--pad) 0 22px;
   }
   .gold-btn-dot svg {
     width: 11px;
@@ -825,13 +857,10 @@ img {
     display: none;
   }
   .cta .gold-btn {
+  --dot: calc(17 * var(--u));
   height: calc(25 * var(--u));
   padding-left: calc(12 * var(--u));
   font-size: calc(6 * var(--u));
-}
-.cta .gold-btn-dot {
-  width: calc(17 * var(--u));
-  height: calc(17 * var(--u));
 }
 
 .footer {
@@ -913,25 +942,6 @@ img {
 }
 .nav-cta:hover span {
   transform: translateX(calc(2 * var(--u)));
-}
-
-/* Brilho que atravessa o botão dourado */
-.gold-btn > span {
-  position: relative;
-}
-.gold-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -60%;
-  width: 40%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.7s var(--ease);
-}
-.gold-btn:hover::before {
-  left: 130%;
 }
 
 /* Entrada do hero */

@@ -90,23 +90,6 @@ export function Effects() {
     cleanups.push(() => spy.disconnect());
 
     if (fine && !reduce) {
-      // Botões magnéticos.
-      document.querySelectorAll<HTMLElement>(".gold-btn").forEach((btn) => {
-        const move = (e: MouseEvent) => {
-          const r = btn.getBoundingClientRect();
-          const x = (e.clientX - (r.left + r.width / 2)) * 0.18;
-          const y = (e.clientY - (r.top + r.height / 2)) * 0.28;
-          btn.style.transform = `translate(${x}px, ${y}px)`;
-        };
-        const leave = () => (btn.style.transform = "");
-        btn.addEventListener("mousemove", move);
-        btn.addEventListener("mouseleave", leave);
-        cleanups.push(() => {
-          btn.removeEventListener("mousemove", move);
-          btn.removeEventListener("mouseleave", leave);
-        });
-      });
-
       // Foto "Sobre" inclina com o mouse.
       const photo = document.querySelector<HTMLElement>(".about-photo");
       if (photo) {

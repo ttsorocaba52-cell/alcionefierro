@@ -11,7 +11,10 @@ export function ArrowUpRight({ size = 10 }: { size?: number }) {
 export function GoldButton({ href, children }: { href?: string; children: React.ReactNode }) {
   const inner = (
     <>
-      <span>{children}</span>
+      <span className="gold-btn-label">
+        <span>{children}</span>
+        <span aria-hidden="true">{children}</span>
+      </span>
       <span className="gold-btn-dot">
         <ArrowUpRight />
       </span>
