@@ -1137,40 +1137,91 @@ img {
   }
 }
 
-/* 02 · pilares */
+/* 02 · pilares — uma direção: o caminho se desenha até o pilar em foco */
+.pillars-grid {
+  position: relative;
+  --p: 0;
+}
 .pillars-grid article {
   position: relative;
+  outline: none;
   cursor: default;
-  transition: transform 0.5s var(--ease);
+  transition: opacity 0.5s var(--ease);
 }
-.pillars-grid article::before {
+.pillars-track {
+  position: absolute;
+  top: calc(8 * var(--u));
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.pillars-track i {
+  position: relative;
+  display: block;
+  height: 1px;
+  width: max(0px, calc(var(--p) * 33.333% - 40 * var(--u)));
+  background: linear-gradient(90deg, rgba(201, 167, 92, 0.2), var(--gold));
+  transition: width 0.8s var(--ease);
+}
+/* ponta de seta no fim do caminho, o mesmo chevron da marca */
+.pillars-track i::after {
   content: "";
   position: absolute;
-  top: calc(-9 * var(--u));
-  left: 0;
-  height: 1px;
-  width: 0;
-  background: var(--gold);
-  transition: width 0.7s var(--ease);
-}
-.pillars-grid article:hover {
-  transform: translateY(calc(-3 * var(--u)));
-}
-.pillars-grid article:hover::before {
-  width: calc(100% - 40 * var(--u));
+  right: 0;
+  top: 0;
+  width: calc(5 * var(--u));
+  height: calc(5 * var(--u));
+  border-top: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+  transform: translate(-1px, -50%) rotate(45deg);
+  transform-origin: 100% 0;
+  opacity: min(var(--p), 1);
+  transition: opacity 0.4s var(--ease);
 }
 .pillar-num {
-  transition: transform 0.5s var(--ease), text-shadow 0.5s var(--ease);
-}
-.pillars-grid article:hover .pillar-num {
-  transform: translateX(calc(5 * var(--u)));
-  text-shadow: 0 0 calc(14 * var(--u)) rgba(201, 167, 92, 0.45);
+  transform-origin: 0 100%;
+  -webkit-text-stroke: 1px transparent;
+  transition: transform 0.6s var(--ease), color 0.5s var(--ease), -webkit-text-stroke-color 0.5s var(--ease);
 }
 .pillars-grid h3 {
   transition: color 0.4s var(--ease);
 }
-.pillars-grid article:hover h3 {
-  color: var(--gold);
+
+@media (hover: hover) and (min-width: 901px) {
+  .pillars-grid:has(article:nth-child(1):is(:hover, :focus-within)) {
+    --p: 1;
+  }
+  .pillars-grid:has(article:nth-child(2):is(:hover, :focus-within)) {
+    --p: 2;
+  }
+  .pillars-grid:has(article:nth-child(3):is(:hover, :focus-within)) {
+    --p: 3;
+  }
+  /* pilares que ficam depois do foco: número vira contorno e o resto recua */
+  .pillars-grid:has(article:nth-child(1):is(:hover, :focus-within)) article:nth-child(n + 2),
+  .pillars-grid:has(article:nth-child(2):is(:hover, :focus-within)) article:nth-child(n + 3) {
+    opacity: 0.4;
+  }
+  .pillars-grid:has(article:nth-child(1):is(:hover, :focus-within)) article:nth-child(n + 2) .pillar-num,
+  .pillars-grid:has(article:nth-child(2):is(:hover, :focus-within)) article:nth-child(n + 3) .pillar-num {
+    color: transparent;
+    -webkit-text-stroke-color: var(--gold);
+  }
+  /* o pilar em foco cresce e ganha destaque */
+  .pillars-grid article:is(:hover, :focus-within) .pillar-num {
+    transform: scale(1.12);
+  }
+  .pillars-grid article:is(:hover, :focus-within) h3 {
+    color: var(--gold);
+  }
+  .pillars-grid article:is(:hover, :focus-within) .body-text {
+    color: var(--text);
+  }
+}
+@media (max-width: 900px) {
+  .pillars-track {
+    display: none;
+  }
 }
 
 /* 03 · para quem — faixa dourada que entra pelo lado do mouse */

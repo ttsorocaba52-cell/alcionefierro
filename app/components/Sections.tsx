@@ -114,12 +114,15 @@ export function PillarsSection() {
       </div>
       <div className="pillars-grid">
         {PILLARS.map((p, i) => (
-          <article key={p.title}>
+          <article key={p.title} tabIndex={0}>
             <span className="pillar-num">{String(i + 1).padStart(2, "0")}</span>
             <h3>{p.title}</h3>
             <p className="body-text">{p.text}</p>
           </article>
         ))}
+        <div className="pillars-track" aria-hidden="true">
+          <i />
+        </div>
       </div>
     </section>
   );
