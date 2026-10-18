@@ -10,22 +10,25 @@ const NAV = [
 
 const STEPS = ["Conhecimento", "Clareza", "Autoridade", "Oportunidades", "Negócio"];
 
-// Coordenadas no sistema do layout (634 × 360). As posições foram medidas
-// na composição de referência (1154 × 828, encostada à direita do hero):
-// 1 px da referência = 360/828 u.
-const K = 360 / 828;
-// Deslocado 22u para a direita para a mão não cobrir a lista de passos.
-const X0 = 634 - 1154 * K + 22;
+// Coordenadas no sistema do layout (634 × 360). As posições foram medidas no
+// enquadramento de referência (2000 × 1125, hero inteiro): 1 px = KX u na
+// horizontal e KY u na vertical.
+const KX = 634 / 2000;
+const KY = 360 / 1125;
 const at = (x: number, y: number, w: number, h: number) => ({
-  x: +(X0 + x * K).toFixed(2),
-  y: +(y * K).toFixed(2),
-  width: +(w * K).toFixed(2),
-  height: +(h * K).toFixed(2),
+  x: +(x * KX).toFixed(2),
+  y: +(y * KY).toFixed(2),
+  width: +(w * KX).toFixed(2),
+  height: +(h * KX).toFixed(2),
 });
 
-const CHEVRONS = [-232, 254, 692].map((x) => at(x, -100, 668, 1080));
-const PERSON = at(180, -10, 671, 1004);
-const GLOW = at(680 - 1029 / 2, 480 - 1026 / 2, 1029, 1026);
+// No enquadramento os chevrons vão do topo à base: escala 0.96 × 1.04.
+const CHEVRONS = [612, 1074, 1518].map((x) => ({
+  ...at(x, 0, 668 * 0.96, 1080),
+  height: +((1080 * 1.04) * KX).toFixed(2),
+}));
+const PERSON = at(932, 80, 671 * 1.04, 1004 * 1.04);
+const GLOW = at(1425 - 1300 / 2, 575 - 1296 / 2, 1300, 1296);
 
 function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
   return (
@@ -55,7 +58,7 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
         </mask>
       </defs>
 
-      <image className="hero-glow" href="/images/hero-glow.webp" {...GLOW} />
+      <image className="hero-glow" href="/images/hero-glow.webp" opacity="0.9" {...GLOW} />
       <g mask={`url(#chev-mask-${id})`}>
         {CHEVRONS.map((c, i) => (
           <image
@@ -63,6 +66,7 @@ function HeroArt({ viewBox, id }: { viewBox: string; id: string }) {
             className="chev"
             style={{ animationDelay: `${0.15 + i * 0.18}s` }}
             href="/images/hero-chevron.webp"
+            preserveAspectRatio="none"
             {...c}
           />
         ))}
@@ -111,7 +115,7 @@ export function Hero() {
         <GoldButton href={CONTACT_HREF}>Agendar conversa estratégica</GoldButton>
       </div>
 
-      <HeroArt id="mobile" viewBox="196 -24 438 384" />
+      <HeroArt id="mobile" viewBox="196 0 438 360" />
 
       <ol className="hero-steps">
         {STEPS.map((step, i) => (
