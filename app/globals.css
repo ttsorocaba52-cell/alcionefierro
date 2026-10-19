@@ -1590,3 +1590,25 @@ img {
     border: 1px solid ButtonText;
   }
 }
+
+/* "Para quem": a linha não é link, então o indicador é só um ponto */
+.audience-dot::after {
+  content: "";
+  width: calc(3 * var(--u));
+  height: calc(3 * var(--u));
+  border-radius: 50%;
+  background: currentColor;
+  transition: transform 0.4s var(--ease);
+}
+.audience-row.is-on .audience-dot::after {
+  transform: scale(1.6);
+}
+.audience-row {
+  cursor: default;
+}
+@media (max-width: 900px) {
+  .audience-dot::after {
+    width: 8px;
+    height: 8px;
+  }
+}

@@ -1,5 +1,5 @@
-import { CONTACT_HREF, INSTAGRAM_URL, WHATSAPP_URL, linkProps } from "../site";
-import { ArrowUpRight, ChapterHead, GoldButton } from "./ui";
+import { INSTAGRAM_URL, WHATSAPP_URL } from "../site";
+import { ChapterHead, GoldButton } from "./ui";
 
 const PROBLEMS = [
   {
@@ -151,7 +151,7 @@ export function AudienceSection() {
           <span>O que busca</span>
         </div>
         {AUDIENCE.map(([profile, goal]) => (
-          <a key={profile} className="audience-row" href={CONTACT_HREF} {...linkProps(CONTACT_HREF)}>
+          <div key={profile} className="audience-row">
             <span className="audience-marquee" aria-hidden="true">
               {[0, 1].map((n) => (
                 <span key={n}>
@@ -166,10 +166,8 @@ export function AudienceSection() {
             </span>
             <strong>{profile}</strong>
             <span>{goal}</span>
-            <span className="audience-dot">
-              <ArrowUpRight size={8} />
-            </span>
-          </a>
+            <span className="audience-dot" aria-hidden="true" />
+          </div>
         ))}
       </div>
     </section>
